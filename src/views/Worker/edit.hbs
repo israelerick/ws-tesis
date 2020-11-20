@@ -1,0 +1,49 @@
+<div class="col-md-4 mx-auto">
+
+    <div class="card">
+        <div class="card-body">
+            <form action="/Worker/edit/{{Worker.id}}" method="POST">
+            <div class="form-group">
+          Nombre
+          <input type="text" name="Nombre" class="form-control" value="{{Worker.Nombre}}"/>
+        </div>
+        <div class="form-group">
+          Apellido
+          <input type="text" name="Apellido" class="form-control" value="{{Worker.Apellido}}"/>
+        </div>
+
+               Descripcion: {{Worker.Descripcion}}
+          </div>
+          <div class="form-group">
+                         <select id="Descripcion" name="Descripcion">
+                          <option value="Area comercial">Area comercial</option>
+                            <option value="Area de almacen">Area de almacen</option>
+                            <option value="Area financiero">Area financiero</option>
+                        </select>
+                    </div>
+      <div class="form-group"></div>
+    Fecha de nacimiento
+          <input type="date" name="Birthday" class="form-control" value="{{Worker.Birthday}}"/>
+        </div>
+
+       <div class="form-group">
+                        Estado actual: {{Worker.Available}}
+                         </div>
+                           <div class="form-group">
+                        <select id="Available" name="Available">
+                            <option value="1">Activo</option>
+                            <option value="0">Desactivo</option>
+                          </select>
+                    </div>
+
+                <div class="form-group">
+                    <button class="btn btn-success btn-block">
+                        Save
+                        <button class="btn btn-primary btn-block" type="reset">
+                     Reset
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

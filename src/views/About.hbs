@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-black w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>MENU<br></b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Go back</a> 
+   
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+   <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Who are we?</a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Where are we?</a>
+   <a href="/cajas" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Catalog</a>
+  
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+  <span>ENVAPORT</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:0px" id="show">
+    <h1 class="w3-jumbo"><b>ENVAPORT</b></h1>
+    <h1 class="w3-xxxlarge w3-text-red"><b>SANTA CRUZ - BOLIVIA</b></h1>
+  </div>
+  
+  <!-- Photo grid (modal) -->
+  <div class="w3-row-padding">
+    <div class="w3-half">
+      <img src="/img/HOLA.png" style="width:70%" onclick="onClick(this)" alt="Concrete meets bricks">
+      </div>
+
+    <div class="w3-half">
+      <img src="/img/HOLA.png" style="width:70%" onclick="onClick(this)" alt="Windows for the atrium">
+      </div>
+  </div>
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+ 
+  
+  <!-- Designers -->
+  <div class="w3-container" id="designers" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b> ¿Quienes somos?</b></h1>
+    <p><b>NUESTRA MISION</b></p>
+    <p>Poder satisfacer al cliente con nuestros productos, de tal manera que llegamos no únicamente a comercializar los envases, sino a personalizarlos con su logo distintivo del cliente, y poder pintar los mismos de 2 a 5 colores, de tal manera darle un estilo perfeccionista a cada modelo</p>
+   
+
+  </div>
+
+  <!-- The Team -->
+  <div class="w3-row-padding ">
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/IMG/CEO.png" alt="John" style="width:100%">
+        <div class="w3-container">
+          <h3>Eduardo Portillo  </h3>
+          <p class="w3-opacity">CEO & Founder</p>
+          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col m4 w3-margin-bottom"> 
+      <div class="w3-light-grey">
+        <img src="/img/CEO2.png" alt="Jane" style="width:80%">
+        <div class="w3-container">
+          <h3>Eduardo Portillo</h3>
+          <p class="w3-opacity">CEE</p>
+          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+       <!-- Designers -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:1500px" id="contact">
+    <h2 class="w3-wide w3-center">CONTACT</h2>
+    <p class="w3-opacity w3-center"><i>Escribenos!</i></p>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-col m6 w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker" style="width:30px"></i> Santa Cruz, Bolivia<br>
+        <i class="fa fa-phone" style="width:30px"></i> Phone: +59 67705868  <br>
+        <i class="fa fa-envelope" style="width:30px"> </i> Email: diazstephany98@gmail.com<br>
+      </div>
+      <div class="w3-col m6">
+      <iframe class="fa fa-facebook-official w3-hover-opacity" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.677662567299!2d-63.14162358511892!3d-17.712680987884468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDQyJzQ1LjciUyA2M8KwMDgnMjIuMCJX!5e0!3m2!1ses!2sbo!4v1600729793731!5m2!1ses!2sbo" width="700" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+  
+  </div>
+    </div>
+  </div>
+
+ 
+
+<!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Stephany Diaz <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+</body>
+</html>

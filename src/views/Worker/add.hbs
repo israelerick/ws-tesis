@@ -1,0 +1,40 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+
+            <div class="card">
+                <div class="card-body">
+                    <form action="/Worker/add" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="Nombre" class="form-control" placeholder="Nombre" autofocus>
+                        </div>
+                         <div class="form-group">
+                            <input type="text" name="Apellido" class="form-control" placeholder="Apellido" autofocus>
+                        </div>
+                        
+                    
+                          <div class="form-group">
+                        Descripcion:
+                        <select id="Descripcion" name="Descripcion">
+                            <option value="Area comercial">Area comercial</option>
+                            <option value="Area de almacen">Area de almacen</option>
+                            <option value="Area financiero">Area financiero</option>
+                        </select>
+                    </div>
+                   
+                   
+                    <div class="form-group">
+                        <input type="date" name="Birthday" class="form-control" placeholder="Fecha de Nacimiento" autofocus>
+                    </div>      
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

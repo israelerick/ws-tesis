@@ -1,0 +1,48 @@
+<div class="col-md-4 mx-auto">
+
+    <div class="card">
+        <div class="card-body">
+            <form action="/Manager/edit/{{Manager.id}}" method="POST">
+            <div class="form-group">
+          Nombre
+          <input type="text" name="Nombre" class="form-control" value="{{Manager.Nombre}}"/>
+        </div>
+        <div class="form-group">
+          Apellido
+          <input type="text" name="Apellido" class="form-control" value="{{Manager.Apellido}}"/>
+        </div>
+
+               Descripcion: {{Manager.Descripcion}}
+          </div>
+          <div class="form-group">
+                         <select id="Descripcion" name="Descripcion">
+                            <option value="Gerente comercial">Gerente comercial</option>
+                            <option value="Gerente de almacen">Gerente de almacen</option>
+                            <option value="Gerente financiero">Gerente financiero</option>
+                        </select>
+                    </div>
+      <div class="form-group"></div>
+    Fecha de nacimiento
+          <input type="date" name="Birthdate" class="form-control" value="{{Manager.Birthday}}"/>
+        </div>
+
+       <div class="form-group">
+                        Estado actual: {{Manager.Available}}
+                         </div>
+                           <div class="form-group">
+                        <select id="Available" name="Available">
+                            <option value="1">activo</option>
+                            <option value="0">desactivo</option>
+                          </select>
+                    </div>
+
+                <div class="form-group">
+                    <button class="btn btn-success btn-block">
+                        Save
+                   
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
