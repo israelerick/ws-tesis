@@ -30,7 +30,7 @@ router.post('/signin', async(req, res, next) => {
     res.redirect('/signin');
   }
   const { username } = req.body;
-  const usuario =await pool.query('SELECT * FROM Users WHERE username = ?', [username]);
+  const usuario =await pool.query('SELECT * FROM users WHERE username = ?', [username]);
   
     if (usuario.length >0 && usuario[0].available == 1)
    {

@@ -10,12 +10,14 @@ const MySQLStore = require('express-mysql-session')(session);
 const bodyParser = require('body-parser');
 
 const { database } = require('./keys');
+var cors = require('cors');
 
 // Intializations
 const app = express();
 require('./lib/passport');
 
 // Settings
+
 app.set('port', process.env.PORT || 4000);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', exphbs({
@@ -28,6 +30,7 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs');
 
 // Middlewares
+app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
