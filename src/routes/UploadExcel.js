@@ -61,9 +61,9 @@ router.post('/photos/upload', upload.array('files', 12), async function (req, re
 			const columna = await pool.query('SELECT nombre, tipo_dato FROM columnas where id =?', [arr[j].id]);
 			aux.push(`${columna[0].nombre}`);
 			if (columna[0].tipo_dato=='DATE') {
-				aux2.push(`'${moment(row.getCell(arr[j].campo).value).utc().format('YYYY/MM/DD')}'`);
+				aux2.push(`'${moment(row.getCell(arr[j].campo).text).utc().format('YYYY/MM/DD')}'`);
 			} else {
-				aux2.push(`'${row.getCell(arr[j].campo).value}'`);
+				aux2.push(`'${row.getCell(arr[j].campo).text}'`);
 			}
 
 		}
@@ -73,7 +73,6 @@ router.post('/photos/upload', upload.array('files', 12), async function (req, re
 		insert.push(`(${aux2.join(',')})`);
 		//console.log(row.getCell('A').value);
 		//console.log(row.getCell('B').value);
-
 	}
 	str_insert += insert.join(',')
 	console.log('data=', str_insert);
