@@ -3,6 +3,7 @@ const router = express.Router();
 var Excel = require('exceljs')
 const pool = require('../database');
 const { isLoggedIn } = require('../lib/auth');
+var moment = require('moment');
 
   var multer  = require('multer')
 //var upload = multer({ dest: 'uploads/' })
@@ -43,30 +44,41 @@ router.post('/add',upload.single('avatar'), async (req, res) => {
 router.post('/photos/upload', upload.array('files', 12), async function (req, res, next) {
   // req.files is array of `photos` files
   // req.body will contain the text fields, if there were any
-  const{tipotabla, nrotabla, nrofila}=req.query;
+  const{tipotabla, nroHoja, nrofila}=req.query;
   let arr = JSON.parse(req.query.orden_columnas);
 	console.log('8888888',arr);
 	let workbook = new Excel.Workbook()
 	await workbook.xlsx.readFile(`./uploads/${tipotabla}.xlsx`)
-	let worksheet = workbook.getWorksheet(parseInt(nrotabla));
+	let worksheet = workbook.getWorksheet(nroHoja);
 	console.log('----****----',worksheet.actualRowCount);
 	const tabla = await pool.query('SELECT TABLA FROM tablas where id =?', [tipotabla]);
-	let insert = []
+	let insert = [], str_insert = ''
+	console.log('nrofila', nrofila);
 	for (let i = nrofila; i< worksheet.actualRowCount; i++) {
 		const row = worksheet.getRow(i);
 		let aux = [], aux2 = [];
 		for (let j=0; j < arr.length; j++) {
-			const columna = await pool.query('SELECT nombre FROM columnas where id =?', [arr[j].id]);
+			const columna = await pool.query('SELECT nombre, tipo_dato FROM columnas where id =?', [arr[j].id]);
 			aux.push(`${columna[0].nombre}`);
-			aux2.push(`'${row.getCell(arr[j].campo).value}'`);
+			if (columna[0].tipo_dato=='DATE') {
+				aux2.push(`'${moment(row.getCell(arr[j].campo).value).utc().format('YYYY/MM/DD')}'`);
+			} else {
+				aux2.push(`'${row.getCell(arr[j].campo).value}'`);
+			}
+
 		}
-		insert.push(`insert into ${tabla[0].TABLA} (${aux.join(',')}) VALUES (${aux2.join(',')})`);
+		if (str_insert=='') {
+			str_insert = `insert into ${tabla[0].TABLA} (${aux.join(',')}) VALUES `
+		}
+		insert.push(`(${aux2.join(',')})`);
 		//console.log(row.getCell('A').value);
 		//console.log(row.getCell('B').value);
 
 	}
-
-  res.status(200).send(insert);
+	str_insert += insert.join(',')
+	console.log('data=', str_insert);
+	await pool.query(str_insert);
+  res.status(200).send(str_insert);
 })
  /*
 var cpUpload = upload.fields([{ name: 'avatar', maxCount: 1 }, { name: 'gallery', maxCount: 8 }])
